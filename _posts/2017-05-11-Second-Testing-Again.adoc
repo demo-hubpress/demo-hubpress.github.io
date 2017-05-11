@@ -8,5 +8,7 @@
 = Second Testing Again
 
 ++++
+<script lang="javascript">
 alert('hello')
+</script>
 ++++
