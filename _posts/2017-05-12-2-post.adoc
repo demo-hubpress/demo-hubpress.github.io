@@ -5,4 +5,4 @@
 // :hp-tags: HubPress, Blog, Open_Source,
 // :hp-alt-title: My English Title
 
-= 1 post
+= 2 post
