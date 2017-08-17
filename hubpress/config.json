@@ -2,15 +2,30 @@
   "meta": {
     "username": "demo-hubpress",
     "repositoryName": "demo-hubpress.github.io",
-    "branch": "master"
+    "branch": "master",
+    "delay": "200"
+  },
+  "site": {
+    "title": "BlahCade Podcast",
+    "description": "Digital Pinball, Real Pinball, Movies, Snacks (but mostly Digital Pinball)",
+    "logo": "/images/logo.png",
+    "cover": "/images/cover.jpg",
+    "postsPerPage": "10",
+    "disqus": "blahcadepodcast"
+  },
+  "socialnetwork": {
+    "email": "blahblahblahcade@gmail.com",
+    "twitter": "https://twitter.com/blahcade",
+    "googleplus": "https://plus.google.com/111201633898451444599/",
+    "github": "https://github.com/blahcadepodcast/"
   },
   "theme": {
-    "name": "casper"
+    "name": "uno"
   },
   "urls": {
     "site": "https://demo-hubpress.github.io",
-    "hubpress": "https://demo-hubpress.github.io",
-    "theme": "//demo-hubpress.github.io/themes/casper",
+    "hubpress": "http://localhost:8080",
+    "theme": "//demo-hubpress.github.io/themes/uno",
     "images": "https://demo-hubpress.github.io/images"
   },
   "initialisationConfigComponent": {
@@ -20,6 +35,13 @@
     "staticRenderFns": [
       null,
       null,
+      null
+    ],
+    "__file": "/Users/Anthonny/github/dev.hubpress.io/src/plugins/hubpress-github/components/InitConfig.vue",
+    "beforeCreate": [
+      null
+    ],
+    "beforeDestroy": [
       null
     ],
     "_Ctor": {}
