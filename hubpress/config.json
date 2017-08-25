@@ -24,7 +24,7 @@
   },
   "urls": {
     "site": "https://demo-hubpress.github.io",
-    "hubpress": "http://localhost:8080",
+    "hubpress": "https://demo-hubpress.github.io",
     "theme": "//demo-hubpress.github.io/themes/uno",
     "images": "https://demo-hubpress.github.io/images"
   },
