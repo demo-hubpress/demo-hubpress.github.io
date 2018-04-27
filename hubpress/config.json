@@ -24,7 +24,7 @@
   },
   "urls": {
     "site": "https://demo-hubpress.github.io",
-    "hubpress": "https://demo-hubpress.github.io",
+    "hubpress": "http://localhost:3000",
     "theme": "//demo-hubpress.github.io/themes/uno",
     "images": "https://demo-hubpress.github.io/images"
   },
@@ -37,13 +37,14 @@
       null,
       null
     ],
-    "__file": "/Users/Anthonny/github/dev.hubpress.io/src/plugins/hubpress-github/components/InitConfig.vue",
+    "_compiled": true,
     "beforeCreate": [
+      null,
       null
     ],
+    "__file": "plugins/hubpress-github/components/InitConfig.vue",
     "beforeDestroy": [
       null
-    ],
-    "_Ctor": {}
+    ]
   }
 }
