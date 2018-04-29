@@ -3,8 +3,7 @@
     "username": "demo-hubpress",
     "repositoryName": "demo-hubpress.github.io",
     "branch": "master",
-    "delay": "200",
-    "cname": ""
+    "delay": "200"
   },
   "site": {
     "title": "BlahCade Podcast",
@@ -12,21 +11,13 @@
     "logo": "/images/logo.png",
     "cover": "/images/cover.jpg",
     "postsPerPage": "10",
-    "disqus": "blahcadepodcast",
-    "delay": "200",
-    "googleAnalytics": ""
+    "disqus": "blahcadepodcast"
   },
   "socialnetwork": {
-    "email": "loool@gmail.com",
+    "email": "blahblahblahcade@gmail.com",
     "twitter": "https://twitter.com/blahcade",
     "googleplus": "https://plus.google.com/111201633898451444599/",
-    "github": "https://github.com/blahcadepodcast/",
-    "facebook": "",
-    "instagram": "",
-    "pinterest": "",
-    "flickr": "",
-    "linkedin": "",
-    "stackoverflow": ""
+    "github": "https://github.com/blahcadepodcast/"
   },
   "theme": {
     "name": "uno"
