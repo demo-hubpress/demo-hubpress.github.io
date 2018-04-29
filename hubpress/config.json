@@ -42,7 +42,7 @@
       null,
       null
     ],
-    "__file": "plugins/hubpress-github/components/InitConfig.vue",
+    "__file": "hubpress-plugins/hubpress-github/components/InitConfig.vue",
     "beforeDestroy": [
       null
     ]
