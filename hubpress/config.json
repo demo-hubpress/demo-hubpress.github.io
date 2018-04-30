@@ -3,8 +3,7 @@
     "username": "demo-hubpress",
     "repositoryName": "demo-hubpress.github.io",
     "branch": "master",
-    "delay": "200",
-    "cname": ""
+    "delay": "200"
   },
   "site": {
     "title": "BlahCade Podcast",
@@ -12,29 +11,21 @@
     "logo": "/images/logo.png",
     "cover": "/images/cover.jpg",
     "postsPerPage": "10",
-    "disqus": "blahcadepodcast",
-    "delay": "200",
-    "googleAnalytics": ""
+    "disqus": "blahcadepodcast"
   },
   "socialnetwork": {
     "email": "blahblahblahcade@gmail.com",
     "twitter": "https://twitter.com/blahcade",
     "googleplus": "https://plus.google.com/111201633898451444599/",
-    "github": "https://github.com/blahcadepodcast/",
-    "facebook": "",
-    "instagram": "",
-    "pinterest": "",
-    "flickr": "",
-    "linkedin": "",
-    "stackoverflow": ""
+    "github": "https://github.com/blahcadepodcast/"
   },
   "theme": {
-    "name": "casper"
+    "name": "uno"
   },
   "urls": {
     "site": "https://demo-hubpress.github.io",
-    "hubpress": "http://localhost:8000",
-    "theme": "//demo-hubpress.github.io/themes/casper",
+    "hubpress": "http://localhost:3000",
+    "theme": "//demo-hubpress.github.io/themes/uno",
     "images": "https://demo-hubpress.github.io/images"
   },
   "initialisationConfigComponent": {
@@ -48,8 +39,12 @@
     ],
     "_compiled": true,
     "beforeCreate": [
+      null,
       null
     ],
-    "__file": "hubpress-plugins/hubpress-github/components/InitConfig.vue"
+    "__file": "hubpress-plugins/hubpress-github/components/InitConfig.vue",
+    "beforeDestroy": [
+      null
+    ]
   }
 }
