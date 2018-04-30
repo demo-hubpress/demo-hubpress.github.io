@@ -24,7 +24,7 @@
   },
   "urls": {
     "site": "https://demo-hubpress.github.io",
-    "hubpress": "http://localhost:3000",
+    "hubpress": "http://localhost:8000",
     "theme": "//demo-hubpress.github.io/themes/uno",
     "images": "https://demo-hubpress.github.io/images"
   },
@@ -39,12 +39,8 @@
     ],
     "_compiled": true,
     "beforeCreate": [
-      null,
       null
     ],
-    "__file": "hubpress-plugins/hubpress-github/components/InitConfig.vue",
-    "beforeDestroy": [
-      null
-    ]
+    "__file": "hubpress-plugins/hubpress-github/components/InitConfig.vue"
   }
 }
