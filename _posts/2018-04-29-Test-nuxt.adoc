@@ -5,7 +5,8 @@
 // :hp-tags: HubPress, Blog, Open_Source,
 // :hp-alt-title: My English Title
 
-= Test nuxt 
+= Test nuxt
+:hp-image: https://images.pexels.com/photos/640781/pexels-photo-640781.jpeg?auto=compress
 
 Test from generate
 
