@@ -8,5 +8,5 @@
 = Test nuxt
 :hp-image: https://images.pexels.com/photos/640781/pexels-photo-640781.jpeg?auto=compress
 
-Test from generate
+Test from generate.
 
