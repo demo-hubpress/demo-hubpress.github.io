@@ -55,5 +55,6 @@
     "beforeDestroy": [
       null
     ]
-  }
+  },
+  "navigation": []
 }
