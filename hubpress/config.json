@@ -29,22 +29,22 @@
     "stackoverflow": ""
   },
   "theme": {
-    "name": "uno"
+    "name": "casper"
   },
   "navigation": [
     {
-      "label": "Home",
+      "title": "Home",
       "url": "https://demo-hubpress.github.io"
     },
     {
-      "label": "Label",
+      "title": "Label",
       "url": "test"
     }
   ],
   "urls": {
     "site": "https://demo-hubpress.github.io",
     "hubpress": "http://localhost:3000",
-    "theme": "//demo-hubpress.github.io/themes/uno",
+    "theme": "//demo-hubpress.github.io/themes/casper",
     "images": "https://demo-hubpress.github.io/images"
   },
   "initialisationConfigComponent": {
