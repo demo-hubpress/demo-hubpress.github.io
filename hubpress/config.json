@@ -31,6 +31,16 @@
   "theme": {
     "name": "uno"
   },
+  "navigation": [
+    {
+      "label": "Home",
+      "url": "https://demo-hubpress.github.io"
+    },
+    {
+      "label": "Label",
+      "url": "test"
+    }
+  ],
   "urls": {
     "site": "https://demo-hubpress.github.io",
     "hubpress": "http://localhost:3000",
@@ -55,15 +65,5 @@
     "beforeDestroy": [
       null
     ]
-  },
-  "navigation": [
-    {
-      "label": "Home",
-      "url": null
-    },
-    {
-      "label": "Home",
-      "url": "test"
-    }
-  ]
+  }
 }
