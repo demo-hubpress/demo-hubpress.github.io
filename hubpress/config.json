@@ -31,16 +31,7 @@
   "theme": {
     "name": "casper"
   },
-  "navigation": [
-    {
-      "label": "Home",
-      "url": "https://demo-hubpress.github.io"
-    },
-    {
-      "label": "Label",
-      "url": "test"
-    }
-  ],
+  "navigation": [],
   "urls": {
     "site": "https://demo-hubpress.github.io",
     "hubpress": "http://localhost:3000",
