@@ -33,11 +33,11 @@
   },
   "navigation": [
     {
-      "title": "Home",
+      "label": "Home",
       "url": "https://demo-hubpress.github.io"
     },
     {
-      "title": "Label",
+      "label": "Label",
       "url": "test"
     }
   ],
