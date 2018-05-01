@@ -56,5 +56,10 @@
       null
     ]
   },
-  "navigation": []
+  "navigation": [
+    {
+      "label": "Home",
+      "url": null
+    }
+  ]
 }
