@@ -7,3 +7,4 @@
 
 = Test page 12
 :hp-type: page
+
