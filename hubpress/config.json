@@ -34,7 +34,7 @@
   "navigation": [],
   "urls": {
     "site": "https://demo-hubpress.github.io",
-    "hubpress": "http://localhost:3000",
+    "hubpress": "https://demo-hubpress.github.io",
     "theme": "//demo-hubpress.github.io/themes/casper",
     "images": "https://demo-hubpress.github.io/images"
   },
