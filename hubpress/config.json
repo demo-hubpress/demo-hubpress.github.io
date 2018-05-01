@@ -60,6 +60,10 @@
     {
       "label": "Home",
       "url": null
+    },
+    {
+      "label": "Home",
+      "url": "test"
     }
   ]
 }
