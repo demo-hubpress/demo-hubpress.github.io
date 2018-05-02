@@ -10,7 +10,7 @@
     "title": "BlahCade Podcast",
     "description": "Digital Pinball, Real Pinball, Movies, Snacks (but mostly Digital Pinball)",
     "logo": "/images/logo.png",
-    "cover": "/images/cover.jpg",
+    "cover": "http://www.guoguiyan.com/data/out/195/68418321-the-best-wallpapers.jpg",
     "postsPerPage": "10",
     "disqus": "blahcadepodcast",
     "delay": "200",
