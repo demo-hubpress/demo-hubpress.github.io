@@ -7,5 +7,6 @@
 
 = about
 :hp-type: page
+:hp-alt-title: My English Title
 
 About me
