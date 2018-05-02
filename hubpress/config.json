@@ -3,12 +3,8 @@
     "username": "demo-hubpress",
     "repositoryName": "demo-hubpress.github.io",
     "branch": "master",
-<<<<<<< HEAD
-    "delay": "200"
-=======
     "delay": "200",
     "cname": ""
->>>>>>> cf2eb947216b09aaf713fdf5139e0fbb6ddd5192
   },
   "site": {
     "title": "BlahCade Podcast",
@@ -16,29 +12,14 @@
     "logo": "/images/logo.png",
     "cover": "/images/cover.jpg",
     "postsPerPage": "10",
-<<<<<<< HEAD
-    "disqus": "blahcadepodcast"
-=======
     "disqus": "blahcadepodcast",
     "delay": "200",
     "googleAnalytics": ""
->>>>>>> cf2eb947216b09aaf713fdf5139e0fbb6ddd5192
   },
   "socialnetwork": {
     "email": "blahblahblahcade@gmail.com",
     "twitter": "https://twitter.com/blahcade",
     "googleplus": "https://plus.google.com/111201633898451444599/",
-<<<<<<< HEAD
-    "github": "https://github.com/blahcadepodcast/"
-  },
-  "theme": {
-    "name": "uno"
-  },
-  "urls": {
-    "site": "https://demo-hubpress.github.io",
-    "hubpress": "http://localhost:8080",
-    "theme": "//demo-hubpress.github.io/themes/uno",
-=======
     "github": "https://github.com/blahcadepodcast/",
     "facebook": "",
     "instagram": "",
@@ -53,7 +34,7 @@
   "navigation": [
     {
       "label": "Home",
-      "url": "https://demo-hubpress.github.io/Home.html"
+      "url": "https://demo-hubpress.github.io"
     },
     {
       "label": "Label",
@@ -64,7 +45,6 @@
     "site": "https://demo-hubpress.github.io",
     "hubpress": "http://localhost:3000",
     "theme": "//demo-hubpress.github.io/themes/casper",
->>>>>>> cf2eb947216b09aaf713fdf5139e0fbb6ddd5192
     "images": "https://demo-hubpress.github.io/images"
   },
   "initialisationConfigComponent": {
@@ -76,16 +56,6 @@
       null,
       null
     ],
-<<<<<<< HEAD
-    "__file": "/Users/Anthonny/github/dev.hubpress.io/src/plugins/hubpress-github/components/InitConfig.vue",
-    "beforeCreate": [
-      null
-    ],
-    "beforeDestroy": [
-      null
-    ],
-    "_Ctor": {}
-=======
     "_compiled": true,
     "beforeCreate": [
       null,
@@ -95,6 +65,5 @@
     "beforeDestroy": [
       null
     ]
->>>>>>> cf2eb947216b09aaf713fdf5139e0fbb6ddd5192
   }
 }
