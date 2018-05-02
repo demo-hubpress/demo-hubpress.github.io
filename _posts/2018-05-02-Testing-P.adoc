@@ -7,3 +7,4 @@
 
 = Testing P
 :hp-type: post
+:hp-image: https://hdwallsource.com/img/2014/6/best-wallpaper-16335-16862-hd-wallpapers.jpg
