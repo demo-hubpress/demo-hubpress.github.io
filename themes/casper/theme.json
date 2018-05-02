@@ -2,6 +2,11 @@
   "files": {
     "loop": "partials/loop.hbs",
     "navigation": "partials/navigation.hbs",
+    "byline-multiple": "partials/byline-multiple.hbs",
+    "byline-single": "partials/byline-single.hbs",
+    "floating-header": "partials/floating-header.hbs",
+    "post-card": "partials/post-card.hbs",
+    "site-nav": "partials/site-nav.hbs",
     "author": "author.hbs",
     "default": "default.hbs",
     "index": "index.hbs",
