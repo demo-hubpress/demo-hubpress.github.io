@@ -10,7 +10,7 @@
     "title": "BlahCade Podcast",
     "description": "Digital Pinball, Real Pinball, Movies, Snacks (but mostly Digital Pinball)",
     "logo": "/images/logo.png",
-    "cover": "/images/cover.jpg",
+    "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxkPQBD7aVUu_OZ6DfcOjeAn6zKxzF1PYxBkWlv8ucwbkk8cRLEw",
     "postsPerPage": "10",
     "disqus": "blahcadepodcast",
     "delay": "200",
