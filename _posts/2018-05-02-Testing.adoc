@@ -6,4 +6,4 @@
 // :hp-alt-title: My English Title
 
 = Testing
-:hp-type: page
+:hp-type: post
