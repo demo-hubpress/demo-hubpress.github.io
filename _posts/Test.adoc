@@ -6,3 +6,4 @@
 // :hp-alt-title: My English Title
 
 = Test
+:hp-type: page
