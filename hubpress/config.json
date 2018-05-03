@@ -29,7 +29,7 @@
     "stackoverflow": ""
   },
   "theme": {
-    "name": "saga"
+    "name": "casper"
   },
   "navigation": [
     {
@@ -44,7 +44,7 @@
   "urls": {
     "site": "https://demo-hubpress.github.io",
     "hubpress": "http://localhost:3000",
-    "theme": "//demo-hubpress.github.io/themes/saga",
+    "theme": "//demo-hubpress.github.io/themes/casper",
     "images": "https://demo-hubpress.github.io/images"
   },
   "initialisationConfigComponent": {
