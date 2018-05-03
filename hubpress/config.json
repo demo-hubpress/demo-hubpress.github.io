@@ -46,5 +46,24 @@
     "hubpress": "http://localhost:3000",
     "theme": "//demo-hubpress.github.io/themes/casper",
     "images": "https://demo-hubpress.github.io/images"
+  },
+  "initialisationConfigComponent": {
+    "name": "initialise-configuration",
+    "computed": {},
+    "methods": {},
+    "staticRenderFns": [
+      null,
+      null,
+      null
+    ],
+    "_compiled": true,
+    "beforeCreate": [
+      null,
+      null
+    ],
+    "__file": "hubpress-plugins/hubpress-github/components/InitConfig.vue",
+    "beforeDestroy": [
+      null
+    ]
   }
 }
