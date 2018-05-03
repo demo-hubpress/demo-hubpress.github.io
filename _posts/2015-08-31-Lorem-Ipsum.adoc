@@ -1,0 +1,310 @@
+// = Your Blog title
+// See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
+// :hp-image: /covers/cover.png
+// :published_at: 2019-01-31
+// :hp-tags: HubPress, Blog, Open_Source,
+// :hp-alt-title: My English Title
+
+= Testing P
+:hp-type: post
+:hp-image: https://hdwallsource.com/img/2014/6/best-wallpaper-16335-16862-hd-wallpapers.jpg
+:hp-tags: Sensit, IoT, Sigfox, Meteor, Parrot, Rolling Spider
+:published_at: 2015-08-31
+:url-blogpost: http://anthonnyquerouil.fr/2015/08/24/Sensit-mon-petit-objet-connecte.html
+:url-rolling-spider: http://www.parrot.com/fr/produits/rolling-spider/
+:url-sensit: https://www.sensit.io/
+
+Comme vous l'avez peut-être lu dans mon précédent billet 
+{url-blogpost}, j'ai reçu récemment un {url-sensit}[Sens'it]. 
+
+image::https://cloud.githubusercontent.com/assets/2006548/9440843/9e9e12bc-4a72-11e5-9485-cc94a6735fbf.JPG[]
+
+J'ai aussi depuis peu un {url-rolling-spider}[Rolling-spider] que je m'étais procuré dans le but de le controller avec un peu de code https://github.com/ChrisTheBaron/cylon-rolling-spider[JS] (c'est à cause de http://twitter.com/k33g_org[@k33g_org] tout ça). L'heure est venue de mixer le tout !
+
+image::https://pbs.twimg.com/media/CNiIQfqWoAAhK9m.jpg[]
+
+== L'objectif
+
+L'objectif est plutôt simple, double cliquer sur le {url-sensit}[Sens'it] et faire décoller le {url-rolling-spider}[Rolling-spider].
+
+Pour ce faire, voici ce qu'il nous faut :
+
+* Un {url-sensit}[Sens'it],
+* Un Parrot Rolling Spider,
+* Un framework JS permettant de controller le spider (on utilisera https://github.com/voodootikigod/node-rolling-spider[node-rolling-spider] wrapper dans un package meteor https://atmospherejs.com/anthonny/rolling-spider[anthonny:rolling-spider]),
+* Un peu de Meteor pour lier le tout.
+
+
+== L'architecture
+
+
+image::https://cloud.githubusercontent.com/assets/2006548/9587833/f979b92c-5024-11e5-9fbf-20a14b2594b8.png[]
+
+1. Le {url-sensit}[Sens'it] va transmettre un message sur le réseau SIGFOX,
+2. Les serveurs SIGFOX vont communiquer aux serveurs AXIBLE qu'un message *button* a été envoyé,
+3. AXIBLE va appelé l'URL de Callback que nous aurons défini dans l'interface d'administration,
+4. Ce callback pointera sur une application *sensit.meteor.com* que nous aurons déployée au préalable,
+5. Cette dernière enregistrera une trace de l'appel dans une collection Mongo,
+6. Notre application cliente établira une connexion DDP avec l'application *sensit.meteor.com*, et observera les changements effectués sur cette collection,
+7. Au premier changement détecté, on décolle.
+
+== La remote-app : sensit.meteor.com
+
+=== Définition de l'URL de callback
+Dans l'interface {url-sensit}[Sens'it], nous allons spécifier une URL de callback pour les notifications de type *button*.
+
+Pour rappel, ce callback est appelé via un GET et peut recevoir en query param certaines valeurs (via des variables {{my_var}}) :
+
+* device_id
+* device_serial_number
+* sensor_id
+* mode
+* notification_type
+* data
+* date
+
+Nous pouvons donc définir l'URL suivante :
+
+[source,bash]
+----
+http://sensit.meteor.com/sensit-callback/button?device_id={{device_id}}&device_serial_number={{device_serial_number}}&sensor_id={{sensor_id}}&mode={{mode}}&notification_type={{notification_type}}&data={{data}}&date={{date}}
+----
+
+image::https://cloud.githubusercontent.com/assets/2006548/9629320/160ef888-5172-11e5-895a-460308bc2a5c.png[]
+
+=== L'application Meteor
+Nous créons notre application *meteor* :
+[source,bash,linenums]
+----
+meteor create remote-app
+cd remote-app
+meteor remove autopublish insecure
+rm remote-app.*
+mkdir server
+touch server/main.js
+----
+
+Pour la gestion des routes, on utilisera http://iron-meteor.github.io/iron-router/[iron-router] :
+[source, javascript]
+----
+meteor add iron:router
+----
+
+Commençons par créer une collection `notification` qui aura pour but de stocker les différentes notifications reçues.
+
+[source, javascript]
+----
+Notification = new Meteor.Collection("notification");
+----
+
+Il faut ensuite définir notre endpoint qui répondra à l'appel du callback.
+
+[source, javascript]
+----
+Router.route('/sensit-callback/:type', {where: 'server'})
+  .get(function () {
+    if (['temperature', 'motion', 'button'].indexOf(this.params.type) < 0)
+      throw new Error('Invalid type');
+
+    var notification = _.extend({type: this.params.type}, this.params.query, {data: JSON.parse(this.params.query.data)});
+
+    Notification.insert(notification);
+    this.response.end('notification ' + notification.type + ' saved\n');
+  });
+----
+
+Nous définissons une route `/sensit-callback/:type` dans laquelle `:type` peut prendre une des valeurs suivantes `['temperature', 'motion', 'button']`. 
+
+On construit ensuite un objet `notification` à partir du `type` et des queryParam (on force la conversion en JSON du paramètre `data` car c'est un objet JSON stringifié).
+
+Enfin on insère notre `notification` en base et on répond en confirmant l'enregistrement.
+
+Pour que les informations présentes dans notre collection soient accessibles par notre "client", il faut les publier (au passage, on va gérer les autres types) :
+
+[source, javascript]
+----
+Meteor.publish("remote-button", function (argument) {
+  return Notification.find({type: 'button'});
+});
+Meteor.publish("remote-temperature", function (argument) {
+  return Notification.find({type: 'temperature'});
+});
+Meteor.publish("remote-motion", function (argument) {
+  return Notification.find({type: 'motion'});
+});
+----
+
+Le code complet :
+[source, javascript, title=remote-app/server/main.js]
+----
+Notification = new Meteor.Collection("notification");
+
+Router.route('/sensit-callback/:type', {where: 'server'})
+  .get(function () {
+    if (['temperature', 'motion', 'button'].indexOf(this.params.type) < 0)
+      throw new Error('Invalid type');
+
+    var notification = _.extend({type: this.params.type}, this.params.query, {data: JSON.parse(this.params.query.data)});
+
+    Notification.insert(notification);
+    this.response.end('notification ' + notification.type + ' saved\n');
+  });
+
+Meteor.publish("remote-temperature", function (argument) {
+  return Notification.find({type: 'temperature'});
+});
+Meteor.publish("remote-motion", function (argument) {
+  return Notification.find({type: 'motion'});
+});
+Meteor.publish("remote-button", function (argument) {
+  return Notification.find({type: 'button'});
+});
+----
+
+=== Un peu de test
+On démarre l'application :
+[source, javascript]
+----
+meteor
+----
+
+On requête l'url :
+
+[source,bash]
+----
+http://localhost:3000/sensit-callback/button?device_serial_number=ABCDE&notification_type=generic_punctual&data=%7B%22first_name%22%3A%22Anthonny%22%2C%22sensit_name%22%3A%22%22%2C%22last_name%22%3A%22Querouil%22%2C%22device_id%22%3A%22ABCDE%22%7D&device_id=1234&sensor_id=5678&date=2015-09-01T17%3A37Z&mode=6
+----
+
+image::https://cloud.githubusercontent.com/assets/2006548/9629955/06bdd084-5177-11e5-8e5b-1aa1478a6413.png[]
+
+Le service répond correctement, et notre `notification` est bien enregistrée :
+
+image::https://cloud.githubusercontent.com/assets/2006548/9630035/b0f0abee-5177-11e5-95dd-1dd622648fce.png[]
+
+=== Le déploiement
+L'application sera déployée sur l'URL *sensit.meteor.com* :
+
+[source, javascript]
+----
+meteor deploy sensit.meteor.com
+----
+
+Pour valider le bon déploiement, on peut reprendre le test effectué au préalable et le faire pointer sur notre "production" :
+
+[source,bash]
+----
+http://sensit.meteor.com/sensit-callback/button?device_serial_number=ABCDE&notification_type=generic_punctual&data=%7B%22first_name%22%3A%22Anthonny%22%2C%22sensit_name%22%3A%22%22%2C%22last_name%22%3A%22Querouil%22%2C%22device_id%22%3A%22ABCDE%22%7D&device_id=1234&sensor_id=5678&date=2015-09-01T17%3A37Z&mode=6
+----
+
+Enfin, on vérifie que la `notification` est bien présente en base :
+
+image::https://cloud.githubusercontent.com/assets/2006548/9630272/66e493a6-5179-11e5-9230-36ecf85d83e1.png[]
+
+== La local-app : sensit-meteor-rs
+
+Nous avons désormais un *backend* qui prend en compte les différentes notifications, il nous faut maintenant une application qui tournera *localement* et qui réagira aux changements qui surviennent dans le backend.
+
+
+=== L'application
+
+[source,shell]
+----
+meteor create local-app
+cd local-app
+meteor remove autopublish insecure
+rm local-app.*
+mkdir server
+touch server/main.js
+----
+
+Nous allons initier une connexion https://www.meteor.com/ddp[DDP] avec notre *backend* et écouter les changements qui sont faits sur la collection `notification`. 
+Pour chaque notification ajoutée dans cette collection que nous appellerons `RemoteNotification`, nous ajouterons une copie dans notre collection *locale* `Notification` :
+
+[source, javascript]
+----
+// Déclaration de la connexion
+var remote = DDP.connect('http://sensit.meteor.com/');
+var RemoteNotification = new Meteor.Collection('notification', { connection: remote });
+remote.subscribe('remote-button');
+
+// On écoute les changements effectués sur la collection en Remote
+RemoteNotification.find().observe({
+  added: function(notification) {
+    console.log('-- remote item added --');
+    // On upsert dans la collection de Notification locale
+    Notification.upsert({notification._id}, {$set: notification});
+  }
+});
+----
+
+
+Il ne nous reste plus qu'à faire décoller le spider lorsqu'une `notification` est ajoutée en local :
+
+[source, javascript]
+----
+var rollingSpider = new RollingSpider();
+
+rollingSpider.connect(Meteor.bindEnvironment(function () {
+  rollingSpider.setup(Meteor.bindEnvironment(function () {
+    rollingSpider.flatTrim();
+    rollingSpider.startPing();
+    rollingSpider.flatTrim();
+
+    // On observe la collection Notification, au premier ajout on decolle !
+    Notification.find().observe({
+      added: function (notification) {
+        rollingSpider.takeOff();
+        rollingSpider.flatTrim();
+      }
+    });
+  }));
+}));
+----
+
+Le code complet :
+[source, javascript, title=local-app/server/main.js]
+----
+var Notification = new Meteor.Collection("notification");
+var remote = DDP.connect('http://sensit.meteor.com/');
+var RemoteNotification = new Meteor.Collection('notification', { connection: remote });
+var isFlying = false;
+
+
+RemoteNotification.find().observe({
+  added: function(notification) {
+    console.log('-- remote item --');
+    console.log(notification);
+    Notification.upsert({_id: notification._id}, {$set: notification});
+  }
+});
+remote.subscribe('remote-button');
+
+rollingSpider.connect(Meteor.bindEnvironment(function () {
+  rollingSpider.setup(Meteor.bindEnvironment(function () {
+    rollingSpider.flatTrim();
+    rollingSpider.startPing();
+    rollingSpider.flatTrim();
+
+    Notification.find().observe({
+      added: function (notification) {
+        if (!isFlying) {
+          isFlying = true;
+          rollingSpider.takeOff();
+          rollingSpider.flatTrim();
+        }
+      }
+    });
+  }));
+}));
+----
+
+
+=== Décollage !
+
+video::8DY4bsKOm5g[youtube]
+
+== Conclusion
+
+Ce billet est l'occasion de mettre en avant la connexion entre deux applications https://www.meteor.com[Meteor] via le protocole https://www.meteor.com/ddp[DDP] et de vous montrer qu'avec du javascript, on se marre bien (en tout cas, c'est vrai pour moi :) ).
+
+Si vous avez des projets similaires, n'hésitez pas à m'en faire part, ce sera un plaisir d'échanger dessus.
