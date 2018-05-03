@@ -6,5 +6,6 @@
 // :hp-alt-title: My English Title
 
 = Post author
+:hp-image: https://images4.alphacoders.com/665/665092.jpg
 
 Yolo
