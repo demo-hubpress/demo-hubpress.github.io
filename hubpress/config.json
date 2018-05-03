@@ -35,6 +35,10 @@
     {
       "label": "Home",
       "url": "https://demo-hubpress.github.io"
+    },
+    {
+      "label": "About me",
+      "url": "https://demo-hubpress.github.io/about-me.html"
     }
   ],
   "urls": {
