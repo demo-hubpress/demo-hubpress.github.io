@@ -44,7 +44,7 @@
   "urls": {
     "site": "https://demo-hubpress.github.io",
     "hubpress": "http://localhost:3000",
-    "theme": "//demo-hubpress.github.io/themes/casper",
+    "theme": "//demo-hubpress.github.io/themes/saga",
     "images": "https://demo-hubpress.github.io/images"
   },
   "initialisationConfigComponent": {
