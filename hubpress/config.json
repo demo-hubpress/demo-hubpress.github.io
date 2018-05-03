@@ -7,20 +7,20 @@
     "cname": ""
   },
   "site": {
-    "title": "Demo Hubpress",
-    "description": "Another Demo of Hubpress",
-    "logo": "https://hubpress.github.io/img/freeze/logo.png",
-    "cover": "https://images.pexels.com/photos/14676/pexels-photo-14676.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "title": "BlahCade Podcast",
+    "description": "Digital Pinball, Real Pinball, Movies, Snacks (but mostly Digital Pinball)",
+    "logo": "/images/logo.png",
+    "cover": "/images/cover.jpg",
     "postsPerPage": "10",
-    "disqus": "demo-hubpress",
+    "disqus": "blahcadepodcast",
     "delay": "200",
     "googleAnalytics": ""
   },
   "socialnetwork": {
-    "email": "",
-    "twitter": "https://twitter.com/hubpressIO",
-    "googleplus": "",
-    "github": "https://github.com/hubpress/",
+    "email": "blahblahblahcade@gmail.com",
+    "twitter": "https://twitter.com/blahcade",
+    "googleplus": "https://plus.google.com/111201633898451444599/",
+    "github": "https://github.com/blahcadepodcast/",
     "facebook": "",
     "instagram": "",
     "pinterest": "",
@@ -37,8 +37,8 @@
       "url": "https://demo-hubpress.github.io"
     },
     {
-      "label": "About me",
-      "url": "https://demo-hubpress.github.io/about-me.html"
+      "label": "Label",
+      "url": "test"
     }
   ],
   "urls": {
