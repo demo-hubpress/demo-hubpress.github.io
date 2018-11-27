@@ -1,53 +1,15 @@
 {
   "meta": {
     "username": "demo-hubpress",
-    "repositoryName": "demo-hubpress.github.io",
-    "branch": "master",
-    "delay": "200",
-    "cname": ""
-  },
-  "site": {
-    "title": "Demo HubPress",
-    "description": "Another demo of HubPress",
-    "logo": "https://hubpress.github.io/img/freeze/logo.png",
-    "cover": "https://images.pexels.com/photos/14676/pexels-photo-14676.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "postsPerPage": "10",
-    "disqus": "demo-hubpress",
-    "delay": "200",
-    "googleAnalytics": ""
-  },
-  "socialnetwork": {
-    "email": "anthonny.querouil@gmail.com",
-    "twitter": "https://twitter.com/HubPressIO",
-    "github": "https://github.com/hubpress/",
-    "facebook": "",
-    "googleplus": "",
-    "instagram": "",
-    "pinterest": "",
-    "flickr": "",
-    "linkedin": "",
-    "stackoverflow": ""
+    "repositoryName": "demo-hubpress.github.iooo",
+    "branch": "master"
   },
   "theme": {
     "name": "casper"
   },
-  "navigation": [
-    {
-      "label": "Home",
-      "url": "https://demo-hubpress.github.io"
-    },
-    {
-      "label": "About me",
-      "url": "https://demo-hubpress.github.io/About-me.html"
-    },
-    {
-      "label": "New page 2000",
-      "url": "https://demo-hubpress.github.io/new-page.html"
-    }
-  ],
   "urls": {
     "site": "https://demo-hubpress.github.io",
-    "hubpress": "http://localhost:3000",
+    "hubpress": "https://demo-hubpress.github.io",
     "theme": "//demo-hubpress.github.io/themes/casper",
     "images": "https://demo-hubpress.github.io/images"
   },
@@ -60,14 +22,6 @@
       null,
       null
     ],
-    "_compiled": true,
-    "beforeCreate": [
-      null,
-      null
-    ],
-    "__file": "hubpress-plugins/hubpress-github/components/InitConfig.vue",
-    "beforeDestroy": [
-      null
-    ]
+    "_Ctor": {}
   }
 }
